@@ -6,6 +6,12 @@
 - Add Routing using the command : npm install react-router-dom, use createBrowserRouter and create a AppRouter.
 - After creating a AppRouter we need to provide this approuter setup to the RouterProvider and pass the AppRouter to it. This way we can setup a Routing in our React Application.
 - After this we will have two routes 1. / -> login, 2. /browse -> browse page
+- Creation of Login and Sign up Form
+- Form Validation
+- useRef Hooks Used
+- Did Firebase Setup
+- Delpoyed our Application to Firebase
+- Create Signup User Account
 
 # Features:
 

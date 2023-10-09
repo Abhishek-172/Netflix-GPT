@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header';
 import { checkValidData } from '../utils/validate';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../utils/firebase';
 
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
@@ -13,7 +15,39 @@ const Login = () => {
     }
     const handleButtonClick = () => {
         const message = checkValidData(email.current.value, password.current.value);
-        setErrorMesage(message);    
+        setErrorMesage(message);
+        //If there is a string message just stop our program here itself do not proceed!
+        if (message) return;
+        //If not lets create a new user
+        if (!isSignInForm) {
+            //Sign Up Logic
+            createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                // Signed up 
+                // It will create a new user and sign that user to the application
+                const user = userCredential.user;
+                console.log('Newly created User Object', user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrorMesage(errorCode + "-" + errorMessage);
+            });
+        } else {
+            //Sign In Logic
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log('SignedIn User Details', user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                if (errorCode === "auth/invalid-login-credentials") {
+                    setErrorMesage("Invalid Login Credentials");
+                }
+            });
+        }
     }
     return (
         <div>
