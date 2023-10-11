@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import { checkValidData } from '../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase';
 
 const Login = () => {
+    const navigate = useNavigate();
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMesage] = useState(null);
     const email = useRef(null);
@@ -27,6 +29,8 @@ const Login = () => {
                 // It will create a new user and sign that user to the application
                 const user = userCredential.user;
                 console.log('Newly created User Object', user);
+                // Once the user is Signed up lets navigate the user to browse page.
+                navigate("/browse");
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -40,6 +44,7 @@ const Login = () => {
                 // Signed in 
                 const user = userCredential.user;
                 console.log('SignedIn User Details', user);
+                navigate("/browse");
             })
             .catch((error) => {
                 const errorCode = error.code;

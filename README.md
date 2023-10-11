@@ -26,5 +26,10 @@
     - Movies Suggestion
       - Movie Lists \* N which is vertically scrollable
 - NetflixGPT Page
+
   - SearchBar
   - Movies Suggestions
+
+- Important:
+  - U can't use useNavigate hook inside the parent component, where you have written a routing logic.
+  - instead you should use navigate in a child components.
