@@ -39,6 +39,10 @@ Cleaning inside a useEffect?
 - After creating a movieSlice we will add this slice to a appstore.
 - Lets add this Movie Result to moviesSlice, for ths we need to dispatch an action from browse.js file
 
+- Lets create a New Hook - Building a Custom Hook
+- Our Browse.js file is little messy it should just render the component and nothing else
+- So we will took that API calling part and dispatching part out of that browse.js file in order to do that we will create a custom hook. named - useNowPlayingMovies.js
+
 # Features:
 
 - Login/Signup Page
