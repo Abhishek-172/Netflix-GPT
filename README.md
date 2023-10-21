@@ -43,6 +43,8 @@ Cleaning inside a useEffect?
 - Our Browse.js file is little messy it should just render the component and nothing else
 - So we will took that API calling part and dispatching part out of that browse.js file in order to do that we will create a custom hook. named - useNowPlayingMovies.js
 
+- Lets create a Browse Page
+
 # Features:
 
 - Login/Signup Page
