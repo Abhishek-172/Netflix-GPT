@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header';
 import { checkValidData } from '../utils/validate';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile  } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useDispatch } from 'react-redux';
-import { addUser } from '../utils/userSlice';
+// import { useDispatch } from 'react-redux';
+// import { addUser } from '../utils/userSlice';
 
 const Login = () => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMesage] = useState(null);
     const email = useRef(null);
@@ -30,24 +30,27 @@ const Login = () => {
                 // It will create a new user and sign that user to the application
                 const user = userCredential.user;
                 console.log('Newly created User Object', user);
-                // Once the user is Signed up lets navigate the user to browse page.
+                /*
+                Old Code
+                Once the user is Signed up lets navigate the user to browse page.
                 updateProfile(auth.currentUser, {
                     displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/28428398?v=4"
                   }).then(() => {
                       // Profile updated!
-                      /*
+                     
                         Now dispatch an action from here once again
                         bcz the user details got updated after the state update
                         Due to which our store was not fully updated 
                         We will fetch the updated value of the user from auth.currentUser
-                      */
+                      
                         const { uid, email, displayName, photoURL } = auth.currentUser;
                         dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
                     // ...
                   }).catch((error) => {
                     // An error occurred
                     // ...
-                  });
+                  }) 
+                  */
             })
             .catch((error) => {
                 const errorCode = error.code;
