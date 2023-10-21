@@ -31,6 +31,14 @@ Cleaning inside a useEffect?
   Now, this onAuthStateChanged() function returns a unsubscribe function.
   If we call this unsubscribe() function it will remove the onAuthStateChanged() from our browser.
 
+- Added HardCoded Values to constants.js file
+- Register TMDB API and create an APP and get a access token
+- Get data from TMDB, Now playing movies list and make an API call from Browse.js file
+- Add a Movie Result Data to a Redux Store
+- Create a new slice. movieSlice - We will keep all the movie data in this slice.
+- After creating a movieSlice we will add this slice to a appstore.
+- Lets add this Movie Result to moviesSlice, for ths we need to dispatch an action from browse.js file
+
 # Features:
 
 - Login/Signup Page
