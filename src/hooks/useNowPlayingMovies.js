@@ -13,12 +13,12 @@ const useNowPlayingMovies = () => {
         // Converting the fetched data to a readable stream
         const json = await data.json();
         //Using Dispatch we have pushed that movie result to the store
+        console.log('Movie Data', json.results);
         dispatch(addNowPlayingMovies(json.results));
-      };
-    
-      useEffect(() => {
-        getNowPlayingMovies();
-      }, []);
+    };
+    useEffect(() => {
+      getNowPlayingMovies();
+    }, []);
 }
 
 export default useNowPlayingMovies;

@@ -44,6 +44,8 @@ Cleaning inside a useEffect?
 - So we will took that API calling part and dispatching part out of that browse.js file in order to do that we will create a custom hook. named - useNowPlayingMovies.js
 
 - Lets create a Browse Page
+- Create a MainContainer, Secondary Container and then provide it in Browse Page
+- 1. Header / Main Container / Secondary Container
 
 # Features:
 
