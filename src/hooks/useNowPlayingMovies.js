@@ -1,4 +1,4 @@
-import { API_OPTIONS } from '../components/constants';
+import { API_OPTIONS } from '../utils/constants';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { addNowPlayingMovies } from '../utils/moviesSlice';

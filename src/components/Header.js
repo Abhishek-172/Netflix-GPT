@@ -5,7 +5,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { addUser, removeUser } from '../utils/userSlice';
 import { useEffect } from 'react';
-import { LOGO, USER_AVATAR } from "../components/constants";
+import { LOGO, SUPPORTED_LANGUAGES, USER_AVATAR } from "../utils/constants";
 import { toggleGptSearchView } from '../utils/gptSlice';
 
 const Header = () => {
@@ -58,6 +58,11 @@ const Header = () => {
                 src={ LOGO } alt="Netflix_LOGO" />
             { user && (
           <div className='flex p-2'>
+            <select className='p-2 bg-gray-900 text-white m-2'>
+              {SUPPORTED_LANGUAGES.map(lang => 
+                <option key={lang.identifier} value={lang.identifier}>{ lang.name}</option>
+              )}
+            </select>
             <button className='py-2 px-4 m-2 mx-4 my-2 bg-purple-800 text-white rounded-lg'
             onClick={handleGPTSearchClick}>
                   GPT Search

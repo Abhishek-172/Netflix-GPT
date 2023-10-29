@@ -1,5 +1,5 @@
 import React from 'react';
-import { IMG_CDN_URL } from './constants';
+import { IMG_CDN_URL } from '../utils/constants';
 
 const MovieCard = ({ posterPath }) => {
   console.log('I am PosterPath', posterPath);
