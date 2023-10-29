@@ -7,11 +7,13 @@ import { addUser, removeUser } from '../utils/userSlice';
 import { useEffect } from 'react';
 import { LOGO, SUPPORTED_LANGUAGES, USER_AVATAR } from "../utils/constants";
 import { toggleGptSearchView } from '../utils/gptSlice';
+import { changeLanguage } from '../utils/configSlice';
 
 const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector(store => store.user);
+    const gptSearch = useSelector(store => store.gptSearch.showGptSearch);
     const handleSignOut = () => {
             signOut(auth).then(() => {
                 // Sign-out successful.
@@ -51,6 +53,12 @@ const Header = () => {
       //  Toggle GPT Search
       dispatch(toggleGptSearchView());
     }
+    
+    const handleLanguageChange = (e) => {
+      //Dispatch an Action
+      dispatch(changeLanguage(e.target.value));
+    }
+
     return (
         <div className='w-screen absolute px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between'>
             <img
@@ -58,14 +66,14 @@ const Header = () => {
                 src={ LOGO } alt="Netflix_LOGO" />
             { user && (
           <div className='flex p-2'>
-            <select className='p-2 bg-gray-900 text-white m-2'>
-              {SUPPORTED_LANGUAGES.map(lang => 
-                <option key={lang.identifier} value={lang.identifier}>{ lang.name}</option>
+            {gptSearch && <select className='p-2 bg-gray-900 text-white m-2' onChange={handleLanguageChange}>
+              {SUPPORTED_LANGUAGES.map(lang =>
+                <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>
               )}
-            </select>
+            </select>}
             <button className='py-2 px-4 m-2 mx-4 my-2 bg-purple-800 text-white rounded-lg'
             onClick={handleGPTSearchClick}>
-                  GPT Search
+                {gptSearch? "Home Page":"GPT Search"}
                 </button>
                 <img alt="usericon" className='w-12 h-12'
                     src={ USER_AVATAR } />
