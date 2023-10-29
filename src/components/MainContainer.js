@@ -12,7 +12,7 @@ const MainContainer = () => {
   //Below is called as Early Return
   if (movies === null) return;
 
-  const mainMovie = movies[3];
+  const mainMovie = movies[7];
   console.log('This is a Main Movie', mainMovie);
   // This will give us an error why? -> Because at the first time before my store is being executed it was null.
   // That is why we get an error. Now to resolve this we need to do an early return.

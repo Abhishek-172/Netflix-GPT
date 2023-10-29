@@ -46,6 +46,9 @@ Cleaning inside a useEffect?
 - Lets create a Browse Page
 - Create a MainContainer, Secondary Container and then provide it in Browse Page
 - 1. Header / Main Container / Secondary Container
+- Work with TMDB APIs Get the Data Create Custom Hooks and get the data from those API. Feed that data to stor and from store use that data in our components and showcase the data.
+
+- GPT Search Feature
 
 # Features:
 
